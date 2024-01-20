@@ -110,6 +110,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Alias
+
 # NeoVim Aliases
 alias v=openNvim
 
@@ -126,6 +127,17 @@ alias vrc=updateNvim
 alias ls="exa --icons --color=always --group-directories-first"
 alias la="exa -a -l -G --git --icons --color=always --group-directories-first"
 alias tree=treeExa
+
+# Git aliases
+alias gi="git init"
+alias ga="git add --all"
+alias gc="git commit -m"
+alias gs="git status -s"
+alias gsw="git switch"
+alias gswm="git switch main"
+alias gb="git branch"
+alias gd="git diff"
+alias gp="git push"
 
 # Functions
 function showFileContent() {
@@ -164,4 +176,6 @@ function openNvim() {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Make excersism visible
 export PATH=~/bin:$PATH
