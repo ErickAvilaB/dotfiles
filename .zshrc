@@ -138,6 +138,7 @@ alias gswm="git switch main"
 alias gb="git branch"
 alias gd="git diff"
 alias gp="git push"
+alias gcl="git clone --depth=1"
 
 # Functions
 function showFileContent() {
