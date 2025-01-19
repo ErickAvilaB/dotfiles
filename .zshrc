@@ -111,22 +111,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Alias
 
-# NeoVim Aliases
-alias v=openNvim
-
 # System aliases
-alias updt="sudo apt update && sudo apt upgrade -y"
-alias clean=cleanAPT
 alias cl="clear"
 alias e="exit"
-alias bat=showFileContent
 alias version="lsb_release -a"
-alias zup="source ~/.zshrc"
-alias zrc=updateZsh
-alias vrc=updateNvim
 alias ls="exa --icons --color=always --group-directories-first"
 alias la="exa -a -l -G --git --icons --color=always --group-directories-first"
-alias tree=treeExa
 
 # Git aliases
 alias gi="git init"
@@ -134,44 +124,41 @@ alias ga="git add --all"
 alias gc="git commit -m"
 alias gs="git status -s"
 alias gsw="git switch"
-alias gswm="git switch main"
 alias gb="git branch"
 alias gd="git diff"
 alias gp="git push"
 alias gcl="git clone --depth=1"
 
 # Functions
-function showFileContent() {
+function bat() {
 	batcat $1 --theme=TwoDark --paging=never
 }
 
-function treeExa() {
-	exa --tree --level=3 $1
+function tree() {
+	exa --tree --level=4 $1
 }
 
-# Update nvim rc
-function updateNvim() {
-	nvim ~/.config/nvim
-}
-
-# Update zsh rc
-function updateZsh() {
-	nvim ~/.zshrc
-}
-
-function cleanAPT() {
+function clean() {
 	sudo apt autoclean
 	sudo apt clean
 	sudo apt autoremove -y
 }
 
-function openNvim() {
+function v() {
     # If no argument is passed, open nvim in current directory
     if [ $# -eq 0 ]; then
-        nvim .
+        /opt/nvim/nvim .
     else
-        nvim $1
+        /opt/nvim/nvim $1
     fi
+}
+
+function update() {
+    sudo apt update
+    sudo apt upgrade -y
+    omz update
+    source ~/.zshrc
+    echo "System updated"
 }
 
 export NVM_DIR="$HOME/.nvm"
@@ -180,3 +167,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Make excersism visible
 export PATH=~/bin:$PATH
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export PATH="$PATH:/opt/nvim/"
